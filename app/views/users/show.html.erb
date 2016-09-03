@@ -2,3 +2,16 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    ユーザー基本情報
+  </div>
+  <div class="panel-body">
+    <p>ニックネーム：  <%= @user.nickname %></p>
+    <p>年齢：<%= @user.age %>歳</p>
+    <p>居住エリア：<%= @user.area %></p>
+    <%= link_to "基本情報を編集する" , edit_user_path(@user) %>
+  </div>
+</div>
+        
