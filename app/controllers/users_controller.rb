@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
+  before_action :authenticated!, only: [:edit, :update]
   
   def show # 追加
    @user = User.find(params[:id])
@@ -20,6 +21,7 @@ class UsersController < ApplicationController
   end
   
   def edit
+    
   end
   
   def update
@@ -41,5 +43,11 @@ class UsersController < ApplicationController
   
   def set_user
     @user = User.find(params[:id])
+  end
+  
+  def authenticated!
+    unless current_user == @user
+      redirect_to root_url
+    end
   end
 end
